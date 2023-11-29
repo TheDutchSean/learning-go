@@ -113,8 +113,7 @@ func calculate(input1 string, input2 string, operation string) float64 {
 	} else if(operation == "/"){
 		return divideValues(value1, value2)
 	}
-
-	return 0
+	panic("Invalid operation")
 }
 
 func convertInputToValue(input string) (float64){
@@ -122,7 +121,8 @@ func convertInputToValue(input string) (float64){
 	value, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
 
 	if(err != nil){
-		return 0
+		message := fmt.Sprintf("%v must be a number", input)
+		panic(message)
 	}
 	
 	return value
